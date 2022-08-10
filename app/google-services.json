@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "248863802976",
+    "project_id": "wallpapers-studio-470ed",
+    "storage_bucket": "wallpapers-studio-470ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248863802976:android:8b22d85bda8be37de36505",
+        "android_client_info": {
+          "package_name": "com.brainmedia.wallpapersstudio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248863802976-dgb6dkrnlc1ji2diq54ph1j29pke583h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVfz3ae_nMJFdQE5NtfkoOLpCxeoUcTqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248863802976-dgb6dkrnlc1ji2diq54ph1j29pke583h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

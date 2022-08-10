@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_2sdp"
+    tools:context="com.brainmedia.wallpapersstudio.MainActivity">
+
+    <ImageView
+        android:id="@+id/wallpapers_IV"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:src="@drawable/ic_image"
+        android:background="@color/progress_bg_color"
+        android:scaleType="centerCrop"
+        />
+
+</LinearLayout>

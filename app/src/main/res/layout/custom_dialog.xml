@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:id="@+id/mainAboutus"
+    android:background="@color/text_color"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <LinearLayout
+        android:background="@drawable/about_us_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp"
+        android:layout_width="@dimen/_230sdp"
+        android:layout_height="@dimen/_220sdp">
+
+        <TextView
+            android:id="@+id/aboutus_title"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aboutUS"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            />
+
+        <RelativeLayout
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:layout_centerVertical="true"
+                android:id="@+id/developedBY_const"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/developed_by"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:textColor="@color/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_toEndOf="@id/developedBY_const"
+                android:text="@string/moazam_saleem"
+                android:textSize="@dimen/_12ssp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/developer_const"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:text="@string/owner"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginTop="@dimen/_5sdp"/>
+            <TextView
+                android:textColor="@color/text_color"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brains_media"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_toEndOf="@id/developer_const"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:textSize="@dimen/_12ssp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            >
+
+            <TextView
+                android:id="@+id/reachUs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@string/reach_us"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_toEndOf="@id/reachUs"
+                android:autoLink="email"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/itdocx1_gmail_com" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/address_const"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:text="@string/address"
+                android:textStyle="bold"
+                android:textSize="@dimen/_12ssp"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+            <TextView
+                android:id="@+id/address_slide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_toEndOf="@id/address_const"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/Address_office"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12ssp" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_share"
+            android:background="@android:color/transparent"
+            android:layout_gravity="end"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:id="@+id/share_btn"
+            />
+
+        <Button
+            android:id="@+id/close_btn"
+            android:text="@string/close"
+            android:drawableEnd="@drawable/ic_close"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/text_color"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>
