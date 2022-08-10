@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                             NatureCategory natureFrag = new NatureCategory();
                             natureFragManager.beginTransaction().replace(R.id.layout_scroll,natureFrag).addToBackStack(null).commit();
 
+                            onBackPressed = true;
 
                             // Implement Nature Interstitial Ad
                             getNatureInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/natureInter");
@@ -151,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                             //Implement Artistic Interstetial
                             getArtisticInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/artisticInter");
                             super.onAdDismissedFullScreenContent();
+                            onBackPressed = true;
                         }
 
                         @Override
@@ -185,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                             //Implement Anonymous Interstetial
                             getAnonymousInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/anonymousInter");
                             super.onAdDismissedFullScreenContent();
+                            onBackPressed = true;
                         }
 
                         @Override
@@ -218,6 +221,8 @@ public class MainActivity extends AppCompatActivity {
                             anonymousFragManager.beginTransaction().replace(R.id.layout_scroll,new GamingCategory(),null).addToBackStack(null).commit();
                             //Implement Gaming Interstetial
                             getGamingInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/gamingInter");
+
+                            onBackPressed = true;
                             super.onAdDismissedFullScreenContent();
                         }
 
