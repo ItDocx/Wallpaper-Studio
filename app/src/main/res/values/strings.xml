@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wallpapers Studio</string>
+    <string name="app_name">Wallpaper Studio</string>
 
 
     <string name="apply_btn">Apply</string>
@@ -7,12 +7,11 @@
     <string name="main_Banner_Ad">ca-app-pub-3940256099942544/6300978111</string>
     <string name="ShowWallpaper_Banner_Ad">ca-app-pub-3940256099942544/6300978111</string>
     <string name="Interstetial_id">ca-app-pub-3940256099942544/1033173712</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
     <string name="aboutUS">About Us</string>
     <string name="developer">Moazam Saleem</string>
-    <string name="gmail">ItDocx1@gmail.com</string>
+    <string name="gmail">brainsmedia.1@gmail.com</string>
     <string name="share">Share</string>
     <string name="RateUs">Rate Us:</string>
     <string name="brains_media">Brains Media</string>
@@ -22,12 +21,10 @@
     <string name="g_mail">Gmail</string>
     <string name="reach_us">Reach Us:</string>
     <string name="address">Address:</string>
-    <string name="Address_office">J789+2V2, Main sheikhpura Road, Khan Tower Near Sada Hussain Imam Baargaah, Taragarh Shahdara Town, Lahore, Sheikhupura, Punjab, Pakistan</string>
-    <string name="itdocx1_gmail_com">ItDocx1@gmail.com</string>
+    <string name="Address_office">Khan Tower Shahdara</string>
     <string name="nature">Nature</string>
     <string name="artistic">Artistic</string>
     <string name="anonymous">Anonymous</string>
-    <string name="hi_user_name">Hi! User Name.</string>
     <string name="welcome_to_your_dashboard">Welcome to your Dashboard.</string>
 
 

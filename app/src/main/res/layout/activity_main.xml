@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     tools:context="com.brainmedia.wallpapersstudio.MainActivity">
 
     <include
@@ -55,8 +55,9 @@
                     android:layout_marginTop="8dp"
                     android:singleLine="true"
                     android:text="@string/welcome_to_your_dashboard"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12ssp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_20ssp"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="@id/layout_btn"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.01"
@@ -185,6 +186,10 @@
 
 
                 </androidx.cardview.widget.CardView>
+
+
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </FrameLayout>

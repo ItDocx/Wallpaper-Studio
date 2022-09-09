@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  version: 1.1.0
+  title: Data365 - Social Media API
+  description: >
+    # Overview
+
+    Data365 provides Social Media APIs for Developers.  
+
+    Expand your social media impact and strengthen social media listening capabilities with any kind of data publicity available in the network.  
+
+    You can get reliable real-time data from Social Media Search APIs for <a href="https://api.data365.co/v1.1/facebook/docs" target=_blank>Facebook</a>, <a href="https://api.data365.co/v1.1/instagram/docs" target=_blank>Instagram</a>, <a href="https://api.data365.co/v1.1/twitter/docs" target=_blank>Twitter</a>, <a href="https://api.data365.co/v1.1/tiktok/docs" target=_blank>TikTok</a>, and <a href="https://api.data365.co/v1.1/linkedin/docs" target=_blank>LinkedIn</a>.
+
+    ## Who it’s good for
+
+    Data365's APIs are great for companies and organizations that want to monitor what people are feeling and saying about their brand on social media
+
+    ## Products supported
+
+    The Data365 platform is organized into five different products: Facebook API, Instagram API, Twitter API, TikTok API and LinkedIn API.  
+
+    With the API you can query profiles data, post data, search for posts or profiles by hashtag and carry out other tasks.
+
+    ## Stay Informed and Get Support
+
+    These <a href="https://data365.co/resources" target=_blank>Resources pages</a> can help you stay on top of new features, breaking news and other helpful materials:
+
+      - Look into our <a href="https://data365.co/resources#useful-guides" target=_blank>Useful Guides</a> to stay on top of the latest features.
+      - Read <a href="https://data365.co/resources#our-news" target=_blank>Our News</a> to stay on top of breaking changes.
+      - Check out clients' <a href="https://data365.co/resources#case-studies" target=_blank>Case Studies</a>.
+
+    Reach out to our <a href="mailto:alina@data365.co">Support manager by email</a> if you still have questions.
+
+    # API operation algorithm
+
+    Our API is based on a REST API architectural style that helps apply standard RESTful principles at scale, fetch data consistently, and ultimately provide a well-structured end-to-end developer experience. 
+    Methods for interacting include such request methods as POST and GET requests. 
+
+    ## Step 1. Create request
+    
+    Create a POST request to start the update process. POST request enables you to receive updated data directly from the social network.
+
+    At this stage, we call upon the social network and update the Data365 databases in conformance with your request.
+      - If the parameter `callback_url` was specified when creating the task, then a POST request will be made to this URL after the update is completed. In this case, you can skip subsequent Steps 2 and 3.  
+
+    E.g.  
+
+    [Create task (POST request) to update a profile](#tag/Tiktok-profile/paths/~1tiktok~1profile~1{profile_id}~1update/post)
+
+    ## Step 2. Get status
+    
+    If the url callback was not specified, the next step is to make a GET request to get the updated status of your POST request.
+
+      - The field `data.status` will display the current update status
+        - `created` - task in line
+        - `pending` - update coming
+        - `finished` - successfully completed
+        - `failed` - completed with an error
+        - `canceled` - task canceled by user
+        - `unknown` - if the update did not start
+      - Repeat this step until the update is complete  
+
+    E.g.  
+
+    [Get status of an update task for a profile](#tag/Tiktok-profile/paths/~1tiktok~1profile~1{profile_id}~1update/get)
+
+    ## Step 3. Get data
+    
+    Create a GET request to get cached data from the databases of Data365  
+
+
+    E.g.  
+
+    [Fetch cached data for a profile](#tag/Tiktok-profile/paths/~1tiktok~1profile~1{profile_id}/get)  
+
+    <br/>
+    API response always contains fields:
+      - `data` - contains the data that the request should return. May be empty
+      - `error` - contains an error code in the field `code` and error description in the field `message`. May be
+    empty if there is no error.
+      - `status` - `ok`, if the request is ok, `fail` - if any error occurred
+
+    # Useful tips 
+
+    ## Paginate through a large set of results
+    
+    API calls that return a large number of entities are broken up into multiple pages of results. One page can contain no more than 100 results at a time.
+    You might need to make multiple GET requests with slightly varied query parameters to paginate through results and iteratively receive all the data the API has collected. 
+    <div align="center"><img alt="cursor" src="/v1.1/tiktok/static/cursor.png#center" /></div><br/>
+
+    ## Set up an auto-update task to monitor
+    
+    You can create a one-time task or set up a monitoring so that the same task repeats automatically and updates the data within a regular time-span. 
+    <div align="center"><img alt="auto_update" src="/v1.1/tiktok/static/auto_update.png#center" /></div><br/>
+
+    ## Calculate the mentions volume
+
+    The Subscription Package is limited by mention per month. Mentions are deducted only for POST requests. Our API allows you to receive data of different types and each request has its own mentions’ value.  
+      
+      
+    - [Here you can see the value of each request type.](#section/API-mentions-quota) 
+
+    - <a href="https://data365.co/pricing" target=_blank>See a calculator to roughly estimate your future volumes</a> 
+
+    - [Set up the endpoints to get the detailed mentions usage statistics](#tag/Tiktok-API-mentions-usage/paths/~1tiktok1stats/get) 
+
+    # API mentions quota
+
+    ## Tiktok post
+
+    1. A post - 1 mention
+
+    ## Tiktok profile
+
+    1. A profile - 9 mentions
+    1. A profile with posts fetched - 9 mentions + 1 mention per post
+      - if profile has 0 posts => 9 mentions (no posts have been fetched)
+      - if profile has 42 feed posts => 9 + 42 mentions
+
+    ## Tiktok search for posts by hashtag / music
+
+    1. A search for posts - 7 mentions
+    1. A search for posts with posts fetched - 7 mentions + 1 mention per post
+      - if search results have 0 posts => 7 mentions (no posts have been fetched)
+      - if search results have 42 posts => 7 + 42 mentions
+
+    ## Tiktok search for profiles
+
+    1. A search for profiles - 9 mentions
+    1. A search for profiles with profiles fetched - 9 mentions + 1 mention per profile
+      - if search results have 0 profiles => 9 mentions (no profiles have been fetched)
+      - if search results have 42 profiles => 9 + 42 mentions
+
+
+  x-logo:
+    url: /v1.1/tiktok/static/logo.png
+    href: https://data365.co/
+
+
+servers:
+  - url: https://api.data365.co/v1.1
+
+
+x-tagGroups:
+  - name: Tiktok
+    tags:
+      - Tiktok profile
+      - Tiktok hashtag search
+      - Tiktok search by music
+      - Tiktok post
+      - Tiktok auto-update tasks
+      - Tiktok API mentions usage
+
+
+paths:
+
+  ###
+  #     TikTok
+  ###
+
+  # TikTok tasks
+  /tiktok/{item_type}/tasks:
+    $ref: "tiktok.yml#/paths/tiktok_tasks_list"
+  /tiktok/{item_type}/tasks/{task_id}:
+    $ref: "tiktok.yml#/paths/tiktok_task"
+  # TikTok post
+  /tiktok/profile/{profile_id}/{section}/posts/{post_id}/update:
+    $ref: "tiktok.yml#/paths/tiktok_post_update"
+  /tiktok/profile/{profile_id}/{section}/posts/{post_id}:
+    $ref: "tiktok.yml#/paths/tiktok_post"
+  # TikTok profile
+  /tiktok/profile/{profile_id}/update:
+    $ref: "tiktok.yml#/paths/tiktok_profile_update"
+  /tiktok/profile/{profile_id}:
+    $ref: "tiktok.yml#/paths/tiktok_profile"
+  /tiktok/profile/{profile_id}/{section}/posts:
+    $ref: "tiktok.yml#/paths/tiktok_profile_posts"
+  # TikTok search by hashtag
+  /tiktok/search/hashtag/{hashtag_id}/update:
+    $ref: "tiktok.yml#/paths/tiktok_hashtag_search_update"
+  /tiktok/search/hashtag/{hashtag_id}:
+    $ref: "tiktok.yml#/paths/tiktok_hashtag_search"
+  /tiktok/search/hashtag/{hashtag_id}/posts:
+    $ref: "tiktok.yml#/paths/tiktok_hashtag_search_posts"
+  # TikTok search by music
+  /tiktok/search/music/{music_title}/{music_id}/update:
+    $ref: "tiktok.yml#/paths/tiktok_music_search_update"
+  /tiktok/search/music/{music_title}/{music_id}:
+    $ref: "tiktok.yml#/paths/tiktok_music_search"
+  /tiktok/search/music/{music_title}/{music_id}/posts:
+    $ref: "tiktok.yml#/paths/tiktok_music_search_posts"
+  # TikTok API mentions usage
+  /tiktok/stats:
+    $ref: "tiktok.yml#/paths/tiktok_stats"
+
+
+components:
+  securitySchemes:
+    accessTokenAuthorization:
+      type: apiKey
+      in: query
+      name: access_token
+
+
+security:
+  - accessTokenAuthorization: [ ]

@@ -10,9 +10,9 @@
 
 
     <color name="backgorund">#FFFFFFFF</color>
-    <color name="text_color">#072B0C</color>
+    <color name="text_color">#276955</color>
 
     <color name="progress_bg_color">#99FFFFFF</color>
-    <color name="bg_fragment">#99072B0C</color>
+    <color name="bg_fragment">#99276955</color>
 
 </resources>

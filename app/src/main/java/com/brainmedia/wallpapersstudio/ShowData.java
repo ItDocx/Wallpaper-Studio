@@ -7,8 +7,10 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Dialog;
 import android.app.WallpaperManager;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.brainmedia.wallpapersstudio.Utilities.NetworkChangeListener;
 import com.bumptech.glide.Glide;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -45,6 +48,8 @@ public class ShowData extends AppCompatActivity {
     InterstitialAd mInterstitialAd;
     private Toolbar toolbar;
     private Dialog dialog;
+
+    private NetworkChangeListener networkchange = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,7 +166,7 @@ public class ShowData extends AppCompatActivity {
     private void shareApp() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        String link = "http://play.google.com";
+        String link = "https://play.google.com/store/apps/details?id=com.brainmedia.wallpapersstudio";
         String desc = "Download the App";
         shareIntent.putExtra(Intent.EXTRA_TEXT,desc);
         shareIntent.putExtra(Intent.EXTRA_TEXT,link);
@@ -269,6 +274,19 @@ public class ShowData extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkchange,intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+
+        unregisterReceiver(networkchange);
+        super.onStop();
     }
 
 }

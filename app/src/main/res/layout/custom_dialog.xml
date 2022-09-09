@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainAboutus"
-    android:background="@color/text_color"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/_220sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:elevation="@dimen/_10sdp"
+    android:background="@drawable/about_us_bg"
     android:gravity="center">
 
     <LinearLayout
-        android:background="@drawable/about_us_bg"
         android:orientation="vertical"
         android:padding="@dimen/_5sdp"
         android:layout_width="@dimen/_230sdp"
@@ -107,7 +109,8 @@
                 android:autoLink="email"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="@string/itdocx1_gmail_com" />
+                android:textColorLink="@color/text_color"
+                android:text="@string/gmail" />
 
         </RelativeLayout>
 
@@ -167,4 +170,4 @@
 
 
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

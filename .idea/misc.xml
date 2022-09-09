@@ -4,9 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/about_us_bg.xml" value="0.1" />
-        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/activity_main.xml" value="0.1111111111111111" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/bg_card.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/bg_close_btn.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_aboutus.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_close.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_image.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_scroll.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/ic_share.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/drawable/progress_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/activity_main.xml" value="0.17" />
         <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/activity_show_data.xml" value="0.1111111111111111" />
-        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/custom_dialog.xml" value="0.1111111111111111" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/activity_splash.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/check_internet.xml" value="0.18611111111111112" />
+        <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/custom_dialog.xml" value="0.31297709923664124" />
         <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/custom_toolbar.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/fragment_anonymous_category.xml" value="0.1111111111111111" />
         <entry key="..\:/Users/Moazam/Desktop/WallpapersStudio/app/src/main/res/layout/fragment_artistic_category.xml" value="0.1111111111111111" />

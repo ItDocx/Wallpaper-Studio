@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.brainmedia.wallpapersstudio.Fragments.AnonymousCategory;
 import com.brainmedia.wallpapersstudio.Fragments.ArtisticCategory;
 import com.brainmedia.wallpapersstudio.Fragments.GamingCategory;
 import com.brainmedia.wallpapersstudio.Fragments.NatureCategory;
+import com.brainmedia.wallpapersstudio.Utilities.NetworkChangeListener;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Dialog dashBoardDialog;
     private RelativeLayout dashBannerCont;
+
+    private NetworkChangeListener networkchange = new NetworkChangeListener();
     private CardView natureCard,artisticCrd,anonymousCard,gamingCard;
 
 
@@ -66,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // Implement Bannner Ad
-        dashBoardAds("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/mainBanner");
+        dashBoardAds("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/mainBanner");
         // Implement Nature Interstitial Ad
-        getNatureInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/natureInter");
+        getNatureInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/natureInter");
         //Implement Artistic Interstetial
-        getArtisticInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/artisticInter");
+        getArtisticInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/artisticInter");
         //Implement Anonymous Interstetial
-        getAnonymousInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/anonymousInter");
+        getAnonymousInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/anonymousInter");
         //Implement Gaming Interstetial
-        getGamingInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/gamingInter");
+        getGamingInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/gamingInter");
 
 
         // Adding Dialog
@@ -106,31 +111,36 @@ public class MainActivity extends AppCompatActivity {
                     dashBoardInter.setFullScreenContentCallback(new FullScreenContentCallback() {
                         @Override
                         public void onAdDismissedFullScreenContent() {
-                            super.onAdDismissedFullScreenContent();
 
+                            onBackPressed = true;
                             // Calling Nature Fragment
                             FragmentManager natureFragManager = getSupportFragmentManager();
                             NatureCategory natureFrag = new NatureCategory();
                             natureFragManager.beginTransaction().replace(R.id.layout_scroll,natureFrag).addToBackStack(null).commit();
 
-                            onBackPressed = true;
-
                             // Implement Nature Interstitial Ad
-                            getNatureInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/natureInter");
-
+                            getNatureInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/natureInter");
+                            super.onAdDismissedFullScreenContent();
                         }
 
                         @Override
                         public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                             super.onAdFailedToShowFullScreenContent(adError);
 
+                            // Calling Nature Fragment
+                            FragmentManager natureFragManager = getSupportFragmentManager();
+                            NatureCategory natureFrag = new NatureCategory();
+                            natureFragManager.beginTransaction().replace(R.id.layout_scroll,natureFrag).addToBackStack(null).commit();
+
+
                             Toast.makeText(MainActivity.this, "Error: "+adError.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
                 }
-
+                // Calling Nature Fragment
+                FragmentManager natureFragManager = getSupportFragmentManager();
+                NatureCategory natureFrag = new NatureCategory();
+                natureFragManager.beginTransaction().replace(R.id.layout_scroll,natureFrag).addToBackStack(null).commit();
 
 
             }
@@ -141,24 +151,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                onBackPressed = true;
+                FragmentManager artisticFragManager = getSupportFragmentManager();
+                artisticFragManager.beginTransaction().replace(R.id.layout_scroll,
+                        new ArtisticCategory(),null).addToBackStack(null).commit();
                 if (dashBoardInter != null){
                     toolbar.setTitle("Artistic Wallpapers");
                     dashBoardInter.show(MainActivity.this);
                     dashBoardInter.setFullScreenContentCallback(new FullScreenContentCallback() {
                         @Override
                         public void onAdDismissedFullScreenContent() {
-                            FragmentManager natureFragManager = getSupportFragmentManager();
-                            natureFragManager.beginTransaction().replace(R.id.layout_scroll,new ArtisticCategory(),null).addToBackStack(null).commit();
+                            FragmentManager artisticFragManager = getSupportFragmentManager();
+                            artisticFragManager.beginTransaction().replace(R.id.layout_scroll,
+                                    new ArtisticCategory(),null).addToBackStack(null).commit();
                             //Implement Artistic Interstetial
-                            getArtisticInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/artisticInter");
+                            getArtisticInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/artisticInter");
+
                             super.onAdDismissedFullScreenContent();
-                            onBackPressed = true;
                         }
 
                         @Override
                         public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
                             super.onAdFailedToShowFullScreenContent(adError);
-
+                            FragmentManager artisticFragManager = getSupportFragmentManager();
+                            artisticFragManager.beginTransaction().replace(R.id.layout_scroll,
+                                    new ArtisticCategory(),null).addToBackStack(null).commit();
                             Toast.makeText(MainActivity.this, "Error: "+adError.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -175,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         anonymousCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                onBackPressed = true;
                 if (dashBoardInter != null){
                     toolbar.setTitle("Anonymous Wallpapers");
                     dashBoardInter.show(MainActivity.this);
@@ -185,9 +202,8 @@ public class MainActivity extends AppCompatActivity {
                             FragmentManager anonymousFragManager = getSupportFragmentManager();
                             anonymousFragManager.beginTransaction().replace(R.id.layout_scroll,new AnonymousCategory(),null).addToBackStack(null).commit();
                             //Implement Anonymous Interstetial
-                            getAnonymousInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/anonymousInter");
+                            getAnonymousInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/anonymousInter");
                             super.onAdDismissedFullScreenContent();
-                            onBackPressed = true;
                         }
 
                         @Override
@@ -201,6 +217,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                FragmentManager anonymousFragManager = getSupportFragmentManager();
+                anonymousFragManager.beginTransaction().replace(R.id.layout_scroll,new AnonymousCategory(),null).addToBackStack(null).commit();
 
 
             }
@@ -210,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         gamingCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                onBackPressed = true;
                 if (dashBoardInter != null){
                     toolbar.setTitle("Gaming Wallpapers");
                     dashBoardInter.show(MainActivity.this);
@@ -220,9 +238,7 @@ public class MainActivity extends AppCompatActivity {
                             FragmentManager anonymousFragManager = getSupportFragmentManager();
                             anonymousFragManager.beginTransaction().replace(R.id.layout_scroll,new GamingCategory(),null).addToBackStack(null).commit();
                             //Implement Gaming Interstetial
-                            getGamingInter("https://wallpapers-studio-470ed-default-rtdb.firebaseio.com/gamingInter");
-
-                            onBackPressed = true;
+                            getGamingInter("https://wallpaper-studio-c1ff6-default-rtdb.firebaseio.com/gamingInter");
                             super.onAdDismissedFullScreenContent();
                         }
 
@@ -233,9 +249,9 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Error: "+adError.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
                 }
+                FragmentManager anonymousFragManager = getSupportFragmentManager();
+                anonymousFragManager.beginTransaction().replace(R.id.layout_scroll,new GamingCategory(),null).addToBackStack(null).commit();
 
 
 
@@ -282,38 +298,38 @@ public class MainActivity extends AppCompatActivity {
         dashBoardDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT );
         dashBoardDialog.setCancelable(false);
 
-        ImageButton share_btn = dashBoardDialog.findViewById(R.id.share_btn);
-        Button close_btn = dashBoardDialog.findViewById(R.id.close_btn);
-        TextView contact_txt = dashBoardDialog.findViewById(R.id.email);
+            ImageButton share_btn = dashBoardDialog.findViewById(R.id.share_btn);
+            Button close_btn = dashBoardDialog.findViewById(R.id.close_btn);
+            TextView contact_txt = dashBoardDialog.findViewById(R.id.email);
 
-        share_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareApp();
+            share_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    shareApp();
 
-            }
-        });
+                }
+            });
 
-        close_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dashBoardDialog.dismiss();
-            }
-        });
+            close_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dashBoardDialog.dismiss();
+                }
+            });
 
-    }
+        }
 
-    // Initialize Share Ap Function
-    private void shareApp() {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        String link = "http://play.google.com";
-        String desc = "Download the App";
-        shareIntent.putExtra(Intent.EXTRA_TEXT,desc);
-        shareIntent.putExtra(Intent.EXTRA_TEXT,link);
-        startActivity(Intent.createChooser(shareIntent,"Share Via"));
+        // Initialize Share Ap Function
+        private void shareApp() {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            String link = "https://play.google.com/store/apps/details?id=com.brainmedia.wallpapersstudio";
+            String desc = "Download the App";
+            shareIntent.putExtra(Intent.EXTRA_TEXT,desc);
+            shareIntent.putExtra(Intent.EXTRA_TEXT,link);
+            startActivity(Intent.createChooser(shareIntent,"Share Via"));
 
-    }
+        }
 
 
 
@@ -333,11 +349,8 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     onBackPressed = false;
                 }
-            },3000);
+            }, 3000);
         }
-
-
-
     }
 
     // Adding Interstitial Ad
@@ -535,4 +548,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkchange,intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+
+        unregisterReceiver(networkchange);
+        super.onStop();
+    }
+
 }

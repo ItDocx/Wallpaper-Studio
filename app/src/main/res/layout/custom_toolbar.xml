@@ -6,6 +6,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/main_Appbar"
+        android:elevation="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,14 +15,15 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/main_toolbar"
-            android:background="@color/white"
+            android:background="@color/text_color"
             android:layout_width="match_parent"
             app:navigationIcon="@drawable/ic_aboutus"
             app:navigationContentDescription="About US"
             android:layout_height="wrap_content"
             app:title="@string/app_name"
-            app:titleTextColor="@color/text_color"
-            android:outlineAmbientShadowColor="@color/text_color"
+            android:elevation="@dimen/_10sdp"
+            app:titleTextColor="@color/white"
+            android:outlineAmbientShadowColor="@color/white"
             />
 
     </com.google.android.material.appbar.AppBarLayout>
